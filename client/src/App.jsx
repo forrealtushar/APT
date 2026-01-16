@@ -3,7 +3,7 @@ import { useState } from 'react';
 import AddAthlete from './components/AddAthlete';
 import AddTest from './components/AddTest';
 import AddScore from './components/AddScore';
-import Leaderboard from './components/LeaderBoard';
+import Leaderboard from './components/Leaderboard';
 
 function App() {
   // State to simulate the current user's role
