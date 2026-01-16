@@ -1,8 +1,6 @@
-// client/src/components/Leaderboard.jsx
 import { useState, useEffect } from 'react';
 import api from '../api/axios';
 
-// Receive "role" as a prop from App.jsx
 const Leaderboard = ({ role }) => {
   const [tests, setTests] = useState([]);
   const [selectedTest, setSelectedTest] = useState('');
@@ -35,13 +33,11 @@ const Leaderboard = ({ role }) => {
     fetchLeaderboard(testId);
   };
 
-  // --- NEW: Delete Function ---
   const handleDelete = async (scoreId) => {
     if (!window.confirm("Are you sure you want to delete this score?")) return;
 
     try {
       await api.delete(`/scores/${scoreId}`);
-      // Refresh the list immediately without reloading page
       setLeaderboard(prev => prev.filter(score => score._id !== scoreId));
     } catch (err) {
       alert("Failed to delete score");
@@ -74,7 +70,6 @@ const Leaderboard = ({ role }) => {
                 <th className="p-4 text-center w-16">Rank</th>
                 <th className="p-4">Athlete Name</th>
                 <th className="p-4 text-right">Score</th>
-                {/* CONDITIONAL COLUMN HEADER */}
                 {role === 'coach' && <th className="p-4 text-center w-20">Action</th>}
               </tr>
             </thead>
@@ -90,9 +85,6 @@ const Leaderboard = ({ role }) => {
                         <span className="block text-xs text-gray-500">{entry.athlete?.team}</span>
                     </td>
                     <td className="p-4 text-right font-mono text-lg text-blue-300">{entry.score}</td>
-                    
-                    
-                    {/* CONDITIONAL DELETE BUTTON */}
                     {role === 'coach' && (
                       <td className="p-4 text-center">
                         <button 

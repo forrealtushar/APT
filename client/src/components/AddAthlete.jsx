@@ -1,4 +1,3 @@
-// client/src/components/AddAthlete.jsx
 import { useState, useEffect } from 'react';
 import api from '../api/axios';
 

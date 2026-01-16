@@ -1,4 +1,3 @@
-// client/src/components/AddScore.jsx
 import { useState, useEffect } from 'react';
 import api from '../api/axios';
 
@@ -7,12 +6,10 @@ const AddScore = ({ onScoreAdded }) => {
   const [testId, setTestId] = useState('');
   const [score, setScore] = useState('');
   
-  // Lists to populate the dropdowns
   const [athletes, setAthletes] = useState([]);
   const [tests, setTests] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // 1. Fetch Athletes and Tests when the component mounts
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,7 +22,7 @@ const AddScore = ({ onScoreAdded }) => {
       }
     };
     fetchData();
-  }, []); // Empty dependency array = run once on load
+  }, []); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,10 +36,10 @@ const AddScore = ({ onScoreAdded }) => {
       await api.post('/scores', { 
         athleteId, 
         testId, 
-        score: Number(score) // Ensure it's sent as a number
+        score: Number(score) 
       });
       alert('Score Recorded Successfully!');
-      setScore(''); // Reset only the score, keep the selections
+      setScore(''); 
       if (onScoreAdded) onScoreAdded();
     } catch (error) {
       console.error(error);
@@ -57,7 +54,6 @@ const AddScore = ({ onScoreAdded }) => {
       <h2 className="text-xl font-bold text-white mb-4">Record Performance</h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end">
         
-        {/* Select Athlete */}
         <div>
           <label className="block text-gray-400 text-sm mb-1">Athlete</label>
           <select 
@@ -73,7 +69,6 @@ const AddScore = ({ onScoreAdded }) => {
           </select>
         </div>
 
-        {/* Select Test */}
         <div>
           <label className="block text-gray-400 text-sm mb-1">Test</label>
           <select 
@@ -89,7 +84,6 @@ const AddScore = ({ onScoreAdded }) => {
           </select>
         </div>
 
-        {/* Score Input */}
         <div>
           <label className="block text-gray-400 text-sm mb-1">Result Score</label>
           <input 

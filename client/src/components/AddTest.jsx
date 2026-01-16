@@ -1,4 +1,3 @@
-// client/src/components/AddTest.jsx
 import { useState } from 'react';
 import { useEffect } from 'react';
 import api from '../api/axios';
@@ -6,7 +5,7 @@ import api from '../api/axios';
 const AddTest = ({ onTestAdded }) => {
   const [name, setName] = useState('');
   const [unit, setUnit] = useState('');
-  const [type, setType] = useState('timer'); // Default to timer
+  const [type, setType] = useState('timer'); 
   const [loading, setLoading] = useState(false);
   const [testList, setAthleteList] = useState([])
 
@@ -27,7 +26,7 @@ const AddTest = ({ onTestAdded }) => {
     if(!window.confirm("Are you sure you want to delete this test?")) return;
     try {
       await api.delete(`/tests/${id}`);
-      fetchTests(); // Refresh the list
+      fetchTests(); 
     } catch (err) {
       alert("Error deleting test");
     }
@@ -57,7 +56,6 @@ const AddTest = ({ onTestAdded }) => {
       <h2 className="text-xl font-bold text-white mb-4">Create New Test Type</h2>
       <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-4 gap-4 items-end mb-14">
         
-        {/* Test Name */}
         <div>
           <label className="block text-gray-400 text-sm mb-1">Test Name</label>
           <input 
@@ -70,7 +68,6 @@ const AddTest = ({ onTestAdded }) => {
           />
         </div>
 
-        {/* Unit */}
         <div>
           <label className="block text-gray-400 text-sm mb-1">Unit</label>
           <input 
@@ -83,7 +80,6 @@ const AddTest = ({ onTestAdded }) => {
           />
         </div>
 
-        {/* Type Selection (Crucial for Leaderboard) */}
         <div>
           <label className="block text-gray-400 text-sm mb-1">Score type</label>
           <select 
@@ -106,7 +102,6 @@ const AddTest = ({ onTestAdded }) => {
         </button>
       </form>
 
-      {/* LIST SECTION - Identical Style to Manage Athletes */}
 <div className="max-h-40 overflow-y-auto pr-2">
   <h3 className="text-gray-400 text-sm font-semibold mb-2">Existing Tests</h3>
   
