@@ -93,7 +93,7 @@ const AddAthlete = ({ onAthleteAdded }) => {
       </form>
 
       <div className="max-h-40 overflow-y-auto pr-2">
-        <h3 className="text-gray-400 text-sm font-semibold mb-2">Existing Roster</h3>
+        <h3 className="text-gray-400 text-sm font-semibold mb-2">Existing Athletes</h3>
         <ul className="space-y-2">
           {athleteList.map(ath => (
             <li key={ath._id} className="flex justify-between items-center bg-slate-900/50 p-2 rounded border border-slate-700">

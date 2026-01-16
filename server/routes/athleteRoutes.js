@@ -114,4 +114,13 @@ router.delete('/athletes/:id', async (req, res) => {
   }
 });
 
+router.delete('/tests/:id',async(req,res)=>{
+  try{
+    await Test.findByIdAndDelete(req.params.id)
+    res.json({message: "Test deleted"})
+  }catch(error){
+    res.status(500).json({message: error.message})
+  }
+})
+
 export default router;
